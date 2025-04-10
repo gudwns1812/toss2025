@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+  <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">🧮 계산기</h1>
+
+  <form th:action="@{/{op}(op='plus')}" method="post" id="calcForm" class="space-y-4">
+    <div>
+      <label class="block mb-1 font-medium">숫자 1</label>
+      <input type="number" name="num1" th:value="${num1}" class="w-full p-3 border border-gray-300 rounded-xl">
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">숫자 2</label>
+      <input type="number" name="num2" th:value="${num2}" class="w-full p-3 border border-gray-300 rounded-xl">
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">연산 결과</label>
+      <input type="text" readonly name="result" th:value="${result}" class="w-full p-3 border bg-gray-100 rounded-xl">
+    </div>
+
+    <div class="grid grid-cols-4 gap-3">
+      <button type="submit" onclick="setOp('plus')" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl font-bold">+</button>
+      <button type="submit" onclick="setOp('minus')" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl font-bold">-</button>
+      <button type="submit" onclick="setOp('multiply')" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl font-bold">×</button>
+      <button type="submit" onclick="setOp('divide')" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl font-bold">÷</button>
+    </div>
+
+    <input type="hidden" id="op" name="op" value="plus">
+  </form>
+
+  <form th:action="@{/clear}" method="post" class="mt-4">
+    <button type="submit" class="w-full bg-red-400 hover:bg-red-500 text-white py-2 rounded-xl font-bold">Clear</button>
+  </form>
+</div>
+
+<script>
+  function setOp(op) {
+    document.getElementById('calcForm').action = `/${op}`;
+    document.getElementById('op').value = op;
+  }
+</script>
+
+</body>
+</html>
