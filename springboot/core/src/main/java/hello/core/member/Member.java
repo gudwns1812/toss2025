@@ -30,6 +30,11 @@ public class Member {
         this.grade = grade;
     }
 
+    public Member() {
+        this.id = null;
+        this.name = null;
+        this.grade = null;
+    }
     public Member(Long id, String name, Grade grade) {
         this.id = id;
         this.name = name;
