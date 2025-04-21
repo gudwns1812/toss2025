@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("message", "박형준 못생겼다");
+        model.addAttribute("message", "ggg");
         return "index";
     }
     @GetMapping("/member")
