@@ -1,7 +1,7 @@
 package hello.core.beanfind;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixdiscountPolicy;
+import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +28,7 @@ public class ApplicationContextExtendsFindTest {
     @DisplayName("부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다.")
     void findBeanByParentTypeBeanName() {
         DiscountPolicy discountPolicy = context.getBean("FixDiscountPolicy",DiscountPolicy.class);
-        assertThat(discountPolicy).isInstanceOf(FixdiscountPolicy.class);
+        assertThat(discountPolicy).isInstanceOf(FixDiscountPolicy.class);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class ApplicationContextExtendsFindTest {
         }
         @Bean
         public DiscountPolicy FixDiscountPolicy() {
-            return new FixdiscountPolicy();
+            return new FixDiscountPolicy();
         }
     }
 }
