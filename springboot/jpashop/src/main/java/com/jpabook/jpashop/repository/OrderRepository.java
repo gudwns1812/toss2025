@@ -1,7 +1,7 @@
 package com.jpabook.jpashop.repository;
 
-import ch.qos.logback.core.util.StringUtil;
 import com.jpabook.jpashop.domain.Order;
+import com.jpabook.jpashop.repository.order.simplequery.SimpleOrderQueryDto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
@@ -89,6 +89,20 @@ public class OrderRepository {
 
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000);
         return query.getResultList();
+    }
+
+    public List<Order> findAll(OrderSearch orderSearch) {
+        return em.createQuery("select o from Order o", Order.class)
+                .setMaxResults(1000)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                        .getResultList();
     }
 
 }
