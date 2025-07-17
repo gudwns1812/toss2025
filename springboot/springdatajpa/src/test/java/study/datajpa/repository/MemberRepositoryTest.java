@@ -236,4 +236,16 @@ public class MemberRepositoryTest {
         List<Member> result = memberRepository.findMemberCustom();
 
     }
+    @Test
+    public void test() {
+        //given
+        List<Member> all = memberRepository.findAll();
+        for (Member member : all) {
+            System.out.println("member = " + member);
+            System.out.println("-> member.team = " + member.getTeam());
+        }
+        //when
+
+        //then
+    }
 }

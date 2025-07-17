@@ -15,8 +15,6 @@ class ItemRepositoryTest {
     @Test
     public void save() {
         //given
-        Item item = new Item();
-        itemRepository.save(item);
         //when
 
         //then
