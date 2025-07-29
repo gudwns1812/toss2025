@@ -8,6 +8,10 @@ public class ImmutableAddress {
         this.value = value;
     }
 
+    public ImmutableAddress withValue(String newValue) {
+        return new ImmutableAddress(newValue); // 새로운 인스턴스를 반환
+    }
+
     public String getValue() {
         return value;
     }
