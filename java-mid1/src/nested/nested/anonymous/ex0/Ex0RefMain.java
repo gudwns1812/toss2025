@@ -1,5 +1,10 @@
 package nested.nested.anonymous.ex0;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Ex0RefMain {
 
     public static void hello(String str) {
