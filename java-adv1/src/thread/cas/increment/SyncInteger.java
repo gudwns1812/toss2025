@@ -1,16 +1,16 @@
 package thread.cas.increment;
 
-public class VolatileInteger implements IncrementInteger{
+public class SyncInteger implements IncrementInteger{
 
-    volatile private int value;
+    private int value;
 
     @Override
-    public void increment() {
+    public synchronized void increment() {
         value++;
     }
 
     @Override
-    public int get() {
+    public synchronized int get() {
         return value;
     }
 }
