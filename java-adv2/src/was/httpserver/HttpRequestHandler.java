@@ -45,54 +45,10 @@ public class HttpRequestHandler implements Runnable {
         }
     }
 
-    private void home(HttpResponse response) {
-        response.writeBody("<h1>home</h1>");
-        response.writeBody("<ul>");
-        response.writeBody("<li><a href='/site1'>site1</a></li>");
-        response.writeBody("<li><a href='/site2'>site2</a></li>");
-        response.writeBody("<li><a href='/search?q=hello'>검색</a></li>");
-        response.writeBody("</ul>");
-
-    }
-
-    private void site1(HttpResponse response) {
-        response.writeBody("<h1>site1</h1>");
-    }
-
-    private void site2(HttpResponse response) {
-        response.writeBody("<h1>site2</h1>");
-    }
-
-    private void notFound(HttpResponse response) {
-        response.writeBody("<h1>404 페이지를 찾을 수 없습니다.</h1>");
-        response.setStatusCode(404);
-    }
-
-    private void search(HttpRequest request, HttpResponse response) {
-        String query = request.getParameter("q");
-        response.writeBody("<h1>search</h1>");
-        response.writeBody("<ul>");
-        response.writeBody("<li>query: " + query + "</li>");
-        response.writeBody("</ul>");
-    }
-
     public synchronized void close() {
         if (closed) return;
 
         closed = true;
     }
-
-    private static String requestToString(BufferedReader reader) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.isEmpty()) {
-                break;
-            }
-            sb.append(line).append("\n");
-        }
-        return sb.toString();
-    }
-
 
 }
